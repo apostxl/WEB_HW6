@@ -1,0 +1,57 @@
+-- query_1.sql
+SELECT student_id, AVG(grade) as avg_grade
+FROM grades
+GROUP BY student_id
+ORDER BY avg_grade DESC
+LIMIT 5;
+
+-- query_2.sql
+SELECT student_id, AVG(grade) as avg_grade
+FROM grades
+WHERE subject_id = 'desired_subject_id'
+GROUP BY student_id
+ORDER BY avg_grade DESC
+LIMIT 1;
+
+-- query_3.sql
+SELECT group_id, AVG(grade) as avg_grade
+FROM grades
+WHERE subject_id = 'desired_subject_id'
+GROUP BY group_id;
+
+-- query_4.sql
+SELECT AVG(grade) as avg_grade
+FROM grades;
+
+-- query_5.sql
+SELECT DISTINCT subject_id
+FROM subjects
+WHERE teacher_id = 'desired_teacher_id';
+
+-- query_6.sql
+SELECT *
+FROM students
+WHERE group_id = 'desired_group_id';
+
+-- query_7.sql
+SELECT student_id, grade
+FROM grades
+WHERE subject_id = 'desired_subject_id' AND group_id = 'desired_group_id';
+
+-- query_8.sql
+SELECT teacher_id, AVG(grade) as avg_grade
+FROM subjects
+JOIN grades ON subjects.subject_id = grades.subject_id
+WHERE subjects.teacher_id = 'desired_teacher_id'
+GROUP BY teacher_id;
+
+-- query_9.sql
+SELECT DISTINCT subject_id
+FROM grades
+WHERE student_id = 'desired_student_id';
+
+-- query_10.sql
+SELECT DISTINCT subjects.subject_id
+FROM subjects
+JOIN grades ON subjects.subject_id = grades.subject_id
+WHERE grades.student_id = 'desired_student_id' AND subjects.teacher_id = 'desired_teacher_id';
